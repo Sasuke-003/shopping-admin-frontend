@@ -1,38 +1,178 @@
-.App {
-  text-align: center;
+.MuiAlert-root {
+    border-radius: 0px !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+    --primary: #000000;
+    --secondary: #ffffff;
+    --border: #252420;
+    --borderSecondary: #707070;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* html {
+    --primary: #ffffff;
+    --secondary: #000000;
+    --border: #eae8e4;
+    --borderSecondary: #707070;
+} */
+
+.app__left {
+    margin: 0px !important;
+    padding: 0 !important;
+    width: calc(100% - 75px) !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.app__full-width {
+    width: 100% !important;
 }
 
-.App-link {
-  color: #61dafb;
+.app__left-hover {
+    position: relative;
+    transition: 0.5s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app__left-hover:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(47, 46, 65, 0.7);
+    transition: 0.5s ease-in-out;
+    backdrop-filter: blur(1.5px);
+    z-index: 99998;
+}
+
+.app__right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75px;
+    height: 100vh;
+    z-index: 99999;
+    background: #ffffff;
+    box-shadow: -10px 0px 30px #00000030;
+    transition: 0.5s ease-in-out;
+    margin: 0;
+    padding: 0;
+}
+
+.app__right-hover {
+    width: 500px;
+    transition: 0.5s ease-in-out;
+}
+
+.app__right-shrink {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: 0.5s ease-in-out;
+}
+
+.app__slack-logo {
+    margin: 10px 12.5px 30px 0;
+    transition: 0.5s ease-in-out;
+}
+
+.app__colors {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #2f2e41;
+    margin: 0 12.5px 25px 0;
+    transition: 0.5s ease-in-out;
+}
+
+.app__right-large {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.app__right-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 15px;
+    margin-bottom: 75px;
+}
+
+.app__header-logo-container {
+    display: flex;
+    font-family: "Alegreya Sans", sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: var(--text);
+    align-items: center;
+}
+
+.app__header-logo {
+    margin-left: 15px;
+    position: relative;
+    top: -3px;
+}
+
+.app__right-basic-input {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 15px;
+}
+
+.app__right-divider {
+    height: 2px;
+    border: 0px;
+    border-radius: 50px;
+    background: var(--blue);
+    margin: 0 15px;
+}
+
+.app__right-color-input-container {
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.app__right-color-input-container h1 {
+    font-family: "Alegreya Sans", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.app__right-color-input {
+    font-family: "Alegreya Sans", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.app__right-color-input input {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 0.5px solid #2f2e41;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    border: 0.5px solid #2f2e41;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+}
+
+.MuiPopover-root {
+    z-index: 99999 !important;
 }

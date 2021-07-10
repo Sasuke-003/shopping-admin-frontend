@@ -1,0 +1,98 @@
+.landing {
+    background: var(--white);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    min-width: 700px;
+    padding: 100px;
+}
+
+.landing__left {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* padding-bottom: 200px; */
+}
+
+.landing__right {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.landing__title {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.landing__title h1 {
+    font-family: "Alegreya Sans", sans-serif;
+    font-weight: 800;
+    font-size: 130px;
+    position: relative;
+}
+
+.landing__logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 25px;
+}
+
+.landing__desc {
+    font-family: "Roboto", sans-serif;
+    font-size: 50px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.landing__desc-pink-word {
+    color: var(--pink);
+}
+
+.landing__btn {
+    margin-top: 100px;
+    width: 250px;
+    height: 75px;
+    background: var(--blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--white);
+}
+
+.landing__left a {
+    text-decoration: none;
+}
+
+.landing__btn:hover {
+    background: var(--pink);
+    box-shadow: 0px 0px 10px #ffb8b8;
+}
+
+.landing__text-block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: var(--white);
+    transition: 1s ease-in-out;
+    transform-origin: right;
+}
+.landing__text-no-block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: var(--white);
+    transform: scaleX(0);
+    transition: 1s ease-in-out;
+}
