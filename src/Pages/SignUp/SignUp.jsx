@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { setCurrentUserStatus } from "../../redux/userStatus/userStatus.actions";
 import { api } from "../../server";
 import "./SignUp.css";
-import { ReactComponent as SignInIllustration } from "../../Svg/login.svg";
+import { ReactComponent as SignUpIllustration } from "../../Svg/signup.svg";
 import { ReactComponent as SlackLogo } from "../../Svg/SlackLogo.svg";
 import { Link } from "react-router-dom";
 import { ROUTER_LINKS } from "../../Router";
@@ -236,7 +236,7 @@ class SignUp extends React.Component {
                         <h1>SHOPIFY</h1>
                         <SlackLogo className='sign-up__logo rotating' />
                     </div>
-                    <SignInIllustration className='sign-up__illustration' />
+                    <SignUpIllustration className='sign-up__illustration' />
                 </div>
             </div>
         );
