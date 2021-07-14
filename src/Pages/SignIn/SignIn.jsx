@@ -48,6 +48,7 @@ class SignIn extends React.Component {
             } else {
                 this.props.setCurrentUserStatus(["isAdmin", false]);
             }
+
             localStorage.setItem("email", email);
             localStorage.setItem("shopID", res.shopID);
             this.props.setCurrentUserStatus(["isLoggedIn", true]);

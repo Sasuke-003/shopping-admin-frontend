@@ -96,12 +96,12 @@ function Manual() {
         {
             header: "Type your environment variable",
             footer1: "KEY : REACT_APP_SHOP_ID",
-            footer2: ` VALUE(your SHOP ID) : 64465467sd75sd16a54`,
+            footer2: ` VALUE(your SHOP ID) : ${localStorage.getItem("shopID")}`,
         },
         {
             header: "Environment Variable Example",
             footer1: "KEY : REACT_APP_SHOP_ID",
-            footer2: ` VALUE(your SHOP ID) : 64465467sd75sd16a54`,
+            footer2: ` VALUE(your SHOP ID) : ${localStorage.getItem("shopID")}`,
         },
         {
             header: " In Settings Tab Scroll down to find you website URL",

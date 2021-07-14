@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = {
     signUp: "/user/sign-up/shop",
-    signIn: "/user/sign-in",
+    signIn: "/user/sign-in/shop",
     basket: "/user/cart",
     checkout: "/user/checkout",
 };
@@ -15,6 +15,7 @@ export const user = {
     signIn: async (signInData) => {
         const res = await axios.post(url.signIn, signInData);
         axios.defaults.headers.common["Authorization"] = `Bearer ${res.accTok}`;
+        localStorage.setItem("accTok", `Bearer ${res.accTok}`);
         return res;
     },
     addToBasket: async (data) => {
