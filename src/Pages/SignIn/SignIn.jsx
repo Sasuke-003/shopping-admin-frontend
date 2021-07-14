@@ -41,8 +41,13 @@ class SignIn extends React.Component {
                 email,
                 pass,
             };
-            await api.user.signIn(Data);
+            const res = await api.user.signIn(Data);
             localStorage.setItem("email", email);
+            if (res.typ === "a") {
+                this.props.setCurrentUserStatus(["isAdmin", true]);
+            } else {
+                this.props.setCurrentUserStatus(["isAdmin", false]);
+            }
             this.props.setCurrentUserStatus(["isLoggedIn", true]);
         } catch (e) {
             getPopup("error", e?.response?.data?.info);

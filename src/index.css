@@ -27,9 +27,6 @@ body {
 *::-webkit-scrollbar {
     display: none;
 }
-* {
-    color: var(--secondary);
-}
 
 :root {
     --text: #2f2e41;

@@ -12,6 +12,7 @@ function Header({ history, isHover }) {
 
     return history.location.pathname === ROUTER_LINKS.signIn ||
         history.location.pathname === ROUTER_LINKS.signUp ||
+        history.location.pathname === ROUTER_LINKS.manual ||
         history.location.pathname === ROUTER_LINKS.landingPage ? null : (
         <div className={`header ${isHover ? "header-hover" : ""}`}>
             <h1 className='header__title' onClick={() => history.push(ROUTER_LINKS.home)}>

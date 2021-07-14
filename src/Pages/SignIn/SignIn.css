@@ -4,23 +4,25 @@
     width: 100vw;
     display: flex;
     min-width: 700px;
-    padding: 100px;
+    padding: 10vh;
 }
 
 .sign-in__left {
-    flex: 0.5;
+    flex: 0.3;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 15%;
+    /* padding-right: 15%; */
 }
 
 .sign-in__right {
-    flex: 0.5;
+    flex: 0.7;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: flex-end; */
+    justify-content: space-between;
+    padding: 25px;
+    align-items: flex-end;
 }
 
 .sign-in__title {

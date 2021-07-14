@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter, Link } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home/Home";
 import Header from "./Components/Header/Header";
@@ -20,6 +20,7 @@ import StoreIcon from "@material-ui/icons/Store";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import Manual from "./Pages/Manual/Manual";
 
 class App extends React.Component {
     constructor(props) {
@@ -27,26 +28,6 @@ class App extends React.Component {
         this.state = {
             isHover: false,
             open: null,
-
-            color1: {
-                primary: "#f1faee",
-                secondary: "#1d3557",
-                border: "#457b9d",
-                borderSecondary: "#a8dadc",
-            },
-            color2: {
-                primary: "#edf2f4",
-                secondary: "#2b2d42",
-                border: "#d90429",
-                borderSecondary: "#ef233c",
-            },
-            color3: {
-                primary: "#f2f2f2",
-                secondary: "#040506",
-                border: "#7c7c7c",
-                borderSecondary: "#eeeeee",
-            },
-            currentColor: {},
             name: "",
             address: "",
             bgc: "#ffffff",
@@ -74,26 +55,31 @@ class App extends React.Component {
         //     border: "#7c7c7c",
         //     borderSecondary: "#7c7c7c",
         // };
-        const { primary, secondary, border, borderSecondary } = this.state.color3;
-        document.documentElement.style.setProperty("--primary", primary);
-        document.documentElement.style.setProperty("--secondary", secondary);
-        document.documentElement.style.setProperty("--border", border);
-        document.documentElement.style.setProperty("--borderSecondary", borderSecondary);
-        this.setState({ currentColor: { primary, secondary, border, borderSecondary } });
+        // const { primary, secondary, border, borderSecondary } = this.state.color3;
+        // document.documentElement.style.setProperty("--primary", primary);
+        // document.documentElement.style.setProperty("--secondary", secondary);
+        // document.documentElement.style.setProperty("--border", border);
+        // document.documentElement.style.setProperty("--borderSecondary", borderSecondary);
+        // this.setState({ currentColor: { primary, secondary, border, borderSecondary } });
     }
     handleSaveColor = () => {
         const { bgc, tc, bc, bsc } = this.state;
+        document.documentElement.style.setProperty("--primary", bgc);
+        document.documentElement.style.setProperty("--secondary", tc);
+        document.documentElement.style.setProperty("--border", bc);
+        document.documentElement.style.setProperty("--borderSecondary", bsc);
+        console.log(this.state);
     };
     handleColorChange = (e) => {
         const { name, value } = e.target;
         this.setState({ [name]: value });
     };
+    handleDownload = () => {};
 
     render() {
-        const { isLoggedIn, isAdmin } = this.props.adminStatus;
+        const { isLoggedIn } = this.props.adminStatus;
         const { snackbarStatus, openSnackbar, history } = this.props;
-        const { isHover, name, address, bgc, tc, bc, bsc, open } = this.state;
-        const { primary, secondary, border, borderSecondary } = this.state.currentColor;
+        const { isHover, name, address, bgc, tc, bc, bsc } = this.state;
         return (
             <div className='App'>
                 {console.log("1")}
@@ -125,6 +111,11 @@ class App extends React.Component {
                                 exact
                                 path={ROUTER_LINKS.navigation}
                                 render={() => (isLoggedIn ? <Navigation /> : <Redirect to={ROUTER_LINKS.landingPage} />)}
+                            />
+                            <Route
+                                exact
+                                path={ROUTER_LINKS.manual}
+                                render={() => (isLoggedIn ? <Manual /> : <Redirect to={ROUTER_LINKS.landingPage} />)}
                             />
                         </Switch>
 
@@ -222,14 +213,19 @@ class App extends React.Component {
                                             Border Secondary Color
                                         </div>
                                     </div>
+                                    <Link to={ROUTER_LINKS.manual} style={{ "text-decoration": "none" }}>
+                                        <div className='app__download' onClick={this.handleDownload}>
+                                            DOWNLOAD
+                                        </div>
+                                    </Link>
                                 </div>
                             ) : (
                                 <div className='app__right-shrink'>
                                     <SlackLogo className='app__slack-logo rotating' />
-                                    <div className='app__colors' style={{ background: primary }}></div>
-                                    <div className='app__colors' style={{ background: secondary }}></div>
-                                    <div className='app__colors' style={{ background: border }}></div>
-                                    <div className='app__colors' style={{ background: borderSecondary }}></div>
+                                    <div className='app__colors' style={{ background: bgc }}></div>
+                                    <div className='app__colors' style={{ background: tc }}></div>
+                                    <div className='app__colors' style={{ background: bc }}></div>
+                                    <div className='app__colors' style={{ background: bsc }}></div>
                                 </div>
                             )}
                         </div>

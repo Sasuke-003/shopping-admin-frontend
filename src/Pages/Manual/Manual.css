@@ -1,0 +1,8 @@
+.manual {
+    display: flex;
+    flex-direction: column;
+}
+
+.manual__top {
+    height: 250px;
+}
