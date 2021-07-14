@@ -9,7 +9,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import Navigation from "./Pages/Navigation/Navigation";
 import Landing from "./Pages/Landing/Landing";
 import { ROUTER_LINKS } from "./Router";
-import { throwMsg } from "./util";
+import { throwMsg, getPopup } from "./util";
 import { openSnackbar } from "./redux/snackbar/snackbar.actions";
 import { getMsgYN } from "./util";
 import { ReactComponent as SlackLogo } from "./Svg/SlackLogo.svg";
@@ -22,19 +22,47 @@ import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import Manual from "./Pages/Manual/Manual";
 
+let timerID;
+const timeOutValue = 10000;
+
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             isHover: false,
             open: null,
-            name: "",
-            address: "",
+            name: "MY SHOP",
+            address: "YOUR ADDRESS",
             bgc: "#ffffff",
             tc: "#000000",
             bc: "#EAE8E4",
             bsc: "#707070",
         };
+    }
+
+    getData = async () => {
+        if (localStorage.getItem("shopID") === "") return;
+        try {
+            const res = await api.shop.getDetails(localStorage.getItem("shopID"));
+            document.documentElement.style.setProperty("--primary", res.color.bgc);
+            document.documentElement.style.setProperty("--secondary", res.color.tc);
+            document.documentElement.style.setProperty("--border", res.color.bc);
+            document.documentElement.style.setProperty("--borderSecondary", res.color.bsc);
+            this.setState({ name: res.name, address: res.address, bgc: res.color.bgc, tc: res.color.tc, bc: res.color.bc, bsc: res.color.bsc });
+        } catch (e) {
+            console.log(e);
+        }
+    };
+    componentWillReceiveProps(nextProps) {
+        const { history } = this.props;
+        if (
+            history.location.pathname !== ROUTER_LINKS.signIn &&
+            history.location.pathname !== ROUTER_LINKS.signUp &&
+            history.location.pathname !== ROUTER_LINKS.manual &&
+            history.location.pathname !== ROUTER_LINKS.landingPage
+        ) {
+            this.getData();
+        }
     }
     componentDidMount() {
         // const color1 = {
@@ -61,21 +89,60 @@ class App extends React.Component {
         // document.documentElement.style.setProperty("--border", border);
         // document.documentElement.style.setProperty("--borderSecondary", borderSecondary);
         // this.setState({ currentColor: { primary, secondary, border, borderSecondary } });
+        const { history } = this.props;
+        if (
+            history.location.pathname !== ROUTER_LINKS.signIn &&
+            history.location.pathname !== ROUTER_LINKS.signUp &&
+            history.location.pathname !== ROUTER_LINKS.manual &&
+            history.location.pathname !== ROUTER_LINKS.landingPage
+        ) {
+            this.getData();
+        }
     }
-    handleSaveColor = () => {
-        const { bgc, tc, bc, bsc } = this.state;
+    handleSaveColor = async () => {
+        const { bgc, tc, bc, bsc, name, address } = this.state;
+        let isChanged = false;
         document.documentElement.style.setProperty("--primary", bgc);
         document.documentElement.style.setProperty("--secondary", tc);
         document.documentElement.style.setProperty("--border", bc);
         document.documentElement.style.setProperty("--borderSecondary", bsc);
-        console.log(this.state);
+        try {
+            const res = await api.shop.getDetails(localStorage.getItem("shopID"));
+            if (
+                res.name !== name ||
+                res.address !== address ||
+                res.color.bgc !== bgc ||
+                res.color.tc !== tc ||
+                res.color.bc !== bc ||
+                res.color.bsc !== bsc
+            ) {
+                await api.shop.details({
+                    name: this.state.name,
+                    address: this.state.address,
+                    color: {
+                        bgc: bgc,
+                        tc: tc,
+                        bc: bc,
+                        bsc: bsc,
+                    },
+                });
+                getPopup("success", "Saved Successfully");
+            }
+        } catch (e) {
+            console.log(e);
+        }
     };
     handleColorChange = (e) => {
         const { name, value } = e.target;
+
+        document.documentElement.style.setProperty(
+            name === "bgc" ? "--primary" : name === "tc" ? "--secondary" : name === "bc" ? "--border" : "--borderSecondary",
+            value
+        );
+
         this.setState({ [name]: value });
     };
     handleDownload = () => {};
-
     render() {
         const { isLoggedIn } = this.props.adminStatus;
         const { snackbarStatus, openSnackbar, history } = this.props;
@@ -130,10 +197,14 @@ class App extends React.Component {
                 </div>
                 {history.location.pathname !== ROUTER_LINKS.signIn &&
                     history.location.pathname !== ROUTER_LINKS.signUp &&
+                    history.location.pathname !== ROUTER_LINKS.manual &&
                     history.location.pathname !== ROUTER_LINKS.landingPage && (
                         <div
                             className={`app__right ${isHover ? "app__right-hover" : ""}`}
-                            onMouseEnter={() => this.setState({ isHover: true })}
+                            onMouseEnter={() => {
+                                this.setState({ isHover: true });
+                                this.getData();
+                            }}
                             onMouseLeave={() => {
                                 this.setState({ isHover: false });
                                 this.handleSaveColor();
@@ -215,7 +286,7 @@ class App extends React.Component {
                                     </div>
                                     <Link to={ROUTER_LINKS.manual} style={{ "text-decoration": "none" }}>
                                         <div className='app__download' onClick={this.handleDownload}>
-                                            DOWNLOAD
+                                            HOW TO DEPLOY
                                         </div>
                                     </Link>
                                 </div>

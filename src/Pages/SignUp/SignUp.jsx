@@ -66,7 +66,7 @@ class SignUp extends React.Component {
                 name,
                 email,
                 pass,
-                // phone,
+                phone,
             };
             await api.user.signUp(Data);
             getPopup("success", "signed up successfully");

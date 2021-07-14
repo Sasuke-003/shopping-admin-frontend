@@ -8,14 +8,12 @@ function Home() {
         <div className='home'>
             <Category />
             <img className='banner' src='/images/winter-banner.jpg' alt='cannot load' />
-            <h1 className='product-home-view-title'>ON SALE</h1>
+            <h1 className='product-home-view-title'>PRODUCTS ON SALE</h1>
             <ProductHomeView key='sale' classKey='sale' />
-            <h1 className='product-home-view-title'>BASED ON YOUR RECENT ACTIVITY</h1>
+            <h1 className='product-home-view-title'>RECOMMENDED PRODUCTS</h1>
             <ProductHomeView key='recent' classKey='recent' />
-            <h1 className='product-home-view-title'>MOST SEARCHED ITEMS</h1>
+            <h1 className='product-home-view-title'>MOST POPULAR PRODUCTS</h1>
             <ProductHomeView key='searched' classKey='searched' />
-            <h1 className='product-home-view-title'>MOST PURCHASED ITEMS</h1>
-            <ProductHomeView key='purchased' classKey='purchased' />
         </div>
     );
 }

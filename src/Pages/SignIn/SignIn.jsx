@@ -42,12 +42,14 @@ class SignIn extends React.Component {
                 pass,
             };
             const res = await api.user.signIn(Data);
-            localStorage.setItem("email", email);
+
             if (res.typ === "a") {
                 this.props.setCurrentUserStatus(["isAdmin", true]);
             } else {
                 this.props.setCurrentUserStatus(["isAdmin", false]);
             }
+            localStorage.setItem("email", email);
+            localStorage.setItem("shopID", res.shopID);
             this.props.setCurrentUserStatus(["isLoggedIn", true]);
         } catch (e) {
             getPopup("error", e?.response?.data?.info);

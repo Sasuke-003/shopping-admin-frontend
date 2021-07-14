@@ -5,6 +5,7 @@
     display: flex;
     min-width: 700px;
     padding: 10vh;
+    color: var(--text) !important;
 }
 
 .sign-in__left {
@@ -42,6 +43,7 @@
     position: absolute;
     top: 0;
     right: 50px;
+    color: var(--text);
 }
 
 .sign-in__logo {

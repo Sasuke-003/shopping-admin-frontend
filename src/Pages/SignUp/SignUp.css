@@ -5,6 +5,7 @@
     display: flex;
     min-width: 700px;
     padding: 10vh;
+    color: var(--text) !important;
 }
 
 .sign-up__left {
