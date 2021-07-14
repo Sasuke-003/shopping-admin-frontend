@@ -69,10 +69,10 @@ class SignUp extends React.Component {
                 phone,
             };
             await api.user.signUp(Data);
-            getPopup("success", "signed up successfully");
-            this.props.history.pushState(ROUTER_LINKS.signIn);
+            getPopup("success", "Signed up successfully");
+            this.props.history.push(ROUTER_LINKS.signIn);
         } catch (e) {
-            getPopup("error", e?.response?.data?.info);
+                getPopup("error", e?.response?.data?.info);
         }
     };
     componentDidMount() {
