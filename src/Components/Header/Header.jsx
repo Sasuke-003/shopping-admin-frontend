@@ -7,7 +7,7 @@ import SearchSharpIcon from "@material-ui/icons/SearchSharp";
 import ShoppingBasketSharpIcon from "@material-ui/icons/ShoppingBasketSharp";
 import ClearSharpIcon from "@material-ui/icons/ClearSharp";
 
-function Header({ history, isHover }) {
+function Header({ history, isHover, name }) {
     const [loc, setLoc] = useState("/");
 
     return history.location.pathname === ROUTER_LINKS.signIn ||
@@ -16,7 +16,7 @@ function Header({ history, isHover }) {
         history.location.pathname === ROUTER_LINKS.landingPage ? null : (
         <div className={`header ${isHover ? "header-hover" : ""}`}>
             <h1 className='header__title' onClick={() => history.push(ROUTER_LINKS.home)}>
-                MY SHOP
+                {name}
             </h1>
             <div className='header__menu-icon'>
                 <div

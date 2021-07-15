@@ -49,7 +49,7 @@ class Landing extends React.Component {
                     <div className='landing__title'>
                         <SlackLogo className='landing__logo rotating' />
                         <h1>
-                            SHOPIFY
+                            E-SHOP
                             <div className={`landing__text-block ${!titlePlay ? "" : "landing__text-no-block"}`}></div>
                         </h1>
                     </div>

@@ -72,7 +72,7 @@ class SignUp extends React.Component {
             getPopup("success", "Signed up successfully");
             this.props.history.push(ROUTER_LINKS.signIn);
         } catch (e) {
-                getPopup("error", e?.response?.data?.info);
+            getPopup("error", e?.response?.data?.info);
         }
     };
     componentDidMount() {
@@ -233,7 +233,7 @@ class SignUp extends React.Component {
 
                 <div className='sign-up__right'>
                     <div className='sign-up__title'>
-                        <h1>SHOPIFY</h1>
+                        <h1>E-SHOP</h1>
                         <SlackLogo className='sign-up__logo rotating' />
                     </div>
                     <SignUpIllustration className='sign-up__illustration' />

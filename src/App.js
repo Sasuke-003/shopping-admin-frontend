@@ -159,7 +159,7 @@ class App extends React.Component {
                             ? "app__full-width"
                             : ""
                     }`}>
-                    <Header isHover={isHover} />
+                    <Header isHover={isHover} name={name} />
                     <div className='App__page'>
                         <Switch>
                             <Route
@@ -234,7 +234,7 @@ class App extends React.Component {
                                             )}
                                         </PopupState>{" "}
                                         <div className='app__header-logo-container'>
-                                            <h1>SHOPIFY</h1>
+                                            <h1>E-SHOP</h1>
                                             <SlackLogo className='app__header-logo rotating' />
                                         </div>
                                     </div>

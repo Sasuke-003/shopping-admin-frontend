@@ -150,7 +150,7 @@ class SignIn extends React.Component {
 
                 <div className='sign-in__right'>
                     <div className='sign-in__title'>
-                        <h1>SHOPIFY</h1>
+                        <h1>E-SHOP</h1>
                         <SlackLogo className='sign-in__logo rotating' />
                     </div>
                     <SignInIllustration className='sign-in__illustration' />
