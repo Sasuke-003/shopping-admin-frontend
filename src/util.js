@@ -81,4 +81,4 @@ export const setUserToken = (token) => store.dispatch(setCurrentUserToken(token)
 
 export const getToken = () => store.getState().userToken;
 
-export const SERVER_URL = "https://ml-int-app.herokuapp.com/public/";
+export const SERVER_URL = "http://localhost:8080";
