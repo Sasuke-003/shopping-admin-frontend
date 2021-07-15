@@ -39,6 +39,7 @@ async function retryReq(req) {
 // Executed During signOut ( found in request.user.signOut )
 function clearAllData() {
     localStorage.clear();
+    localStorage.setItem("accTok", "");
     // Clears all Cookie  ( From : https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript )
     document.cookie.split(";").forEach(function (c) {
         document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");

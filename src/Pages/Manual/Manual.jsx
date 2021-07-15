@@ -48,7 +48,28 @@ function Manual() {
             footer2: "",
         },
         {
-            header: "Choose GitHub as a deployment method",
+            header: "Go to settings tab",
+            footer1: "",
+            footer2: "",
+        },
+        {
+            header: "Scroll down and click add build pack",
+            footer1: "",
+            footer2: "",
+        },
+        {
+            header: "Paste the build pack URL : https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz",
+            footer1: "And click save",
+            footer2: "",
+        },
+        {
+            header: "Build pack should be successfully added",
+            footer1: "",
+            footer2: "",
+        },
+
+        {
+            header: "Open Deploy tab Choose GitHub as a deployment method",
             footer1: "",
             footer2: "",
         },
