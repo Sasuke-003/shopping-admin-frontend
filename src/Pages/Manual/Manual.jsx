@@ -139,7 +139,7 @@ function Manual() {
                 </h2>
                 <h2 style={{ fontSize: "25px", marginTop: "18px", marginBottom: "25px" }}>
                     KEY : REACT_APP_SHOP_ID
-                    <br /> VALUE : 64465467sd75sd16a54
+                    <br /> VALUE : {localStorage.getItem("shopID")}
                 </h2>
                 {data.map((dt, index) =>
                     index === 0 ? (
